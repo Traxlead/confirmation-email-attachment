@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+	<name>confirmationemailattachment</name>
+	<displayName><![CDATA[Confirmation Email Attachment]]></displayName>
+	<version><![CDATA[0.1.0]]></version>
+	<description><![CDATA[Allows administrator to attach documents in the Order Confirmation Email.]]></description>
+	<author><![CDATA[Traxlead]]></author>
+	<tab><![CDATA[emailing]]></tab>
+	<is_configurable>1</is_configurable>
+	<need_instance>1</need_instance>
+</module>
