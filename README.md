@@ -21,3 +21,5 @@ de vérifier qu'il n'interfère pas avec un autre module qui redéfinit la méth
 validateOrder();
 
 Le module n'a été testé que sur la version 1.6.0.6 de PrestaShop.
+
+Version 0.1
