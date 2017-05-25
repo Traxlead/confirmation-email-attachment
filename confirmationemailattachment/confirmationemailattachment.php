@@ -32,7 +32,7 @@ class ConfirmationEmailAttachment extends Module
 {
     protected $config_form = false;
 
-    protected $target_directory = _PS_ROOT_DIR_ . '/upload/';
+    protected $target_directory;
 
     public function __construct()
     {
@@ -55,6 +55,9 @@ class ConfirmationEmailAttachment extends Module
         $this->confirmUninstall = $this->l('Are you sure you want to uninstall?');
 
         $this->ps_versions_compliancy = array('min' => '1.6', 'max' => '1.6.0.6');
+
+        // Upload directory
+        $this->target_directory = _PS_ROOT_DIR_ . '/upload/';
     }
 
     /**
