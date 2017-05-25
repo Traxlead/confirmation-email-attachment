@@ -54,7 +54,7 @@ class ConfirmationEmailAttachment extends Module
 
         $this->confirmUninstall = $this->l('Are you sure you want to uninstall?');
 
-        $this->ps_versions_compliancy = array('min' => '1.6', 'max' => _PS_VERSION_);
+        $this->ps_versions_compliancy = array('min' => '1.6', 'max' => '1.6.0.6');
     }
 
     /**
@@ -63,9 +63,7 @@ class ConfirmationEmailAttachment extends Module
      */
     public function install()
     {
-        return parent::install() &&
-            $this->registerHook('header') &&
-            $this->registerHook('backOfficeHeader');
+        return parent::install();
     }
 
     public function uninstall()
@@ -179,12 +177,6 @@ class ConfirmationEmailAttachment extends Module
      */
     protected function getConfigFormValues()
     {
-        // return array(
-        //     'ORDEREMAILATTACHMENT_LIVE_MODE' => Configuration::get('ORDEREMAILATTACHMENT_LIVE_MODE', true),
-        //     'ORDEREMAILATTACHMENT_ACCOUNT_EMAIL' => Configuration::get('ORDEREMAILATTACHMENT_ACCOUNT_EMAIL', 'contact@prestashop.com'),
-        //     'ORDEREMAILATTACHMENT_ACCOUNT_PASSWORD' => Configuration::get('ORDEREMAILATTACHMENT_ACCOUNT_PASSWORD', null),
-        // );
-
         return array(
             'CEA_ENABLED'         => Configuration::get('CEA_ENABLED'),
             'CEA_ATTACHMENT_FILE' => Configuration::get('CEA_ATTACHMENT_FILE')
@@ -206,25 +198,5 @@ class ConfirmationEmailAttachment extends Module
             Configuration::updateValue('CEA_ATTACHMENT_FILE', $target_file);
         
         Configuration::updateValue('CEA_ENABLED', Tools::getValue('CEA_ENABLED'));
-    }
-
-    /**
-    * Add the CSS & JavaScript files you want to be loaded in the BO.
-    */
-    public function hookBackOfficeHeader()
-    {
-        if (Tools::getValue('module_name') == $this->name) {
-            $this->context->controller->addJS($this->_path.'views/js/back.js');
-            $this->context->controller->addCSS($this->_path.'views/css/back.css');
-        }
-    }
-
-    /**
-     * Add the CSS & JavaScript files you want to be added on the FO.
-     */
-    public function hookHeader()
-    {
-        $this->context->controller->addJS($this->_path.'/views/js/front.js');
-        $this->context->controller->addCSS($this->_path.'/views/css/front.css');
     }
 }
